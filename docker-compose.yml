@@ -1,11 +1,10 @@
-version: "3.9"
 services:
   backend:
     build: ./backend
     ports:
       - "8000:8000"
     volumes:
-      - /home/k8master/stellar:/app/logs:ro
+      - ${SCI_LOG_DIR}:/app/logs:ro
     environment:
       - LOG_PATH=/app/logs/cli_logs.jsonl
 
@@ -13,8 +12,9 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: http://localhost:8000/api
+        VITE_API_URL: ${VITE_API_URL}
     ports:
       - "5173:5173"
     depends_on:
       - backend
+

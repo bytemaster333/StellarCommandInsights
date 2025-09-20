@@ -1,0 +1,14 @@
+# runtime / host
+logs/
+*.jsonl
+.env
+
+# node
+node_modules/
+dist/
+.DS_Store
+
+# python
+__pycache__/
+*.pyc
+
